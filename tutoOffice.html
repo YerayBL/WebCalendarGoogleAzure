@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Google Calendar </title>
+  <meta charset="utf-8" />
+  <title>Calendaios Angel 24</title>
+  <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel='icon' href='/favicon.ico'>
+  <script src="homeGoogle-demo.js"></script>
+  <link rel="script" href="/homeGoogle-demo.js">
+</head>
+
+<body>
+  <div id="divLogo" style="background-color:#003764;"><img src="/img/a24.png" alt="a24"
+      style="display:block;margin:auto;height:130px;"></div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container main-container ">
+
+      <div class="navbar-header">
+
+        <!--Menú-->
+        <button type="button" class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!--Información del menú-->
+      <div id="navbar" class="navbar-collapse collapse" style="background-color:black">
+        <ul class="nav navbar-nav authed-nav">
+
+          <!--<li id='inbox-nav'><a href="#cal1">Leonardo Da Vinci</a></li>-->
+          <li id='inbox-nav'><a class="glyphicon glyphicon-home" style="font-size:28px" href="index.php"></a></li>
+
+        </ul>
+        
+      </div>
+
+  </nav>
+
+  
+
+  <!--Texto página principal-->
+  <div class="container main-container">
+    <div id="signin-prompt" class="jumbotron page">
+      <h1>TUTORIAL Office365</h1>
+      <p>Creado 22 de mayo de 2019</p>
+      <br>
+      
+      
+          <button class="accordion">Registro en la aplicación en Azure AD</button>
+          <div class="panel2">
+            
+            <p>Para registrar una aplicación en Azure es necesario acceder al <a href="https://portal.azure.com/signin/index/" target="_blank">Portal de Azure</a> 
+                con una cuenta de office365.</p>
+                <img class="center-block" src="img/1g.png" alt="1g">
+                <p>Una vez dentro y logueado, es necesario hacer clic sobre ver todos los servicios de Azure y
+                    posteriormente buscar “registro de aplicaciones” y entrar en este servicio.</p>
+                <img class="center-block" src="img/2g.png" alt="2g">
+                <!--<p>Una vez dentro podremos registrar nuestra aplicación. En este caso usaremos la versión
+                    preliminar, por tanto accederemos a dicha versión haciendo clic sobre el recuadro morado.</p>
+                <img src="img/3g.png" alt="3g">-->
+                <p>Para registrar una aplicación nueva hacemos clic en el botón “+ Nuevo Registro”.</p>
+                <img class="center-block" src="img/4g.png" alt="4g">
+                <p> Una vez comenzado el proceso de registro introduciremos un nombre descriptivo para 
+                  la aplicación y la creamos.</p>
+                <img class="center-block" src="img/5g.png" alt="5g">
+                
+          </div>
+          
+          <button class="accordion">Obtener Id de aplicación y configurar Url de redirección</button>
+          <div class="panel2">
+            <p>Una vez completado el registro de la aplicación, es necesario guardar la Id de 
+              la aplicación y configurar una Url de redirección.
+                La Id de la aplicación se puede obtener accediendo a la información general de la
+                aplicación.</p>
+            <img class="center-block" src="img/6g.png" alt="6g">
+            <p>La Url de redirección se configura haciendo clic sobre el menú de “Autenticación”.
+                En este menú añadiremos un Url tipo Web con el valor de Uri de redirección 
+                "http://localhost:8000" </p>
+            <img class="center-block" src="img/11g.png" alt="11g">
+            <p>En el mismo menú, más abajo debemos marcar las casillas de la misma forma que 
+              la siguiente imagen.</p>
+              <img class="center-block" src="img/12g.png" alt="12g">
+              <p>La configuración del Portal de Azure esta terminada. Pulse Guardar para finalizar
+                la configuración.</p>
+            <!--<img src="img/7g.png" alt="7g">
+            <p>Finalmente es necesario otorgar los permisos a la aplicación para poder acceder a los
+                diversos ámbitos de Office365, como el calendario o mail. Se puede acceder haciendo clic
+                en la opción “Permisos de API” en el menú.
+                Una vez dentro, para agregar permisos se hace clic sobre el botón “+ Agregar un permiso”
+                en la parte superior izquierda. Ahora se seleccionan los permisos necesarios, en la imagen
+                de abajo se muestran algunos ejemplos. Finalmente una vez agregados en esta misma
+                venta en la parte inferior es necesario otorgarse los consentimientos de administrador para
+                algunos permisos, en caso contrario, estos no funcionarán.</p>
+                <img src="img/8g.png" alt="8g">-->
+          </div>
+          
+          <button class="accordion">Permisos de cuentas y delegación</button>
+          <div class="panel2">
+            <p>Para realizar los siguientes pasos se requiere una cuenta de administrador. 
+              Consulte con su administrador para delegar permisos de recursos de salas.</p>
+            <p>En primer lugar se ha de entrar en Office365 y hacer login. Una vez dentro se despliegan
+                las aplicaciones y accedemos al apartado de “Administración”. </p>
+            <img class="center-block" src="img/9g.png" alt="9g">
+            <p>Accedemos a Recursos, y posteriormente a
+                “Salas y equipos”. En este apartado es necesario seleccionar los recursos y delegar
+                permisos sobre la cuenta que estamos usando de Office365.</p>
+                <img class="center-block" src="img/10g.png" alt="10g">
+          </div>
+      
+    </div>
+
+  
+          
+          <script>
+          var acc = document.getElementsByClassName("accordion");
+          var i;
+          
+          for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var panel = this.nextElementSibling;
+              if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+              } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+              } 
+            });
+          }
+          </script>
+          <script>
+          var bool2 = localStorage.getItem("checkL");
+          console.log(bool2);
+          if (bool2 == "true") {
+            document.getElementById("divLogo").style.display = "none";
+          }else{
+            document.getElementById("divLogo").style.display = "block";
+          }
+
+          </script>
+</body>
+
+</html>

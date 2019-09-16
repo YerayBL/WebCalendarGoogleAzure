@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Google Calendar </title>
+  <meta charset="utf-8" />
+  <title>Calendaios Angel 24</title>
+  <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js"></script>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel='icon' href='/favicon.ico'>
+  <script src="homeGoogle-demo.js"></script>
+  <link rel="script" href="/homeGoogle-demo.js">
+</head>
+
+
+
+<body onload="fadeOut()">
+  <div id="divLogo" style="background-color:#003764;"><img src="/img/a24.png" alt="a24"
+      style="display:block;margin:auto;height:130px;"></div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container main-container ">
+
+      <div class="navbar-header">
+
+        <!--Menú-->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!--Información del menú-->
+      <div id="navbar" class="navbar-collapse collapse" style="background-color:black">
+        <ul class="nav navbar-nav authed-nav">
+
+          <!--<li id='inbox-nav'><a href="#cal1">Leonardo Da Vinci</a></li>-->
+          <li id='inbox-nav'><a class="glyphicon glyphicon-home" style="font-size:28px" href="index.php"></a></li>
+          <li id='inbox-nav4'><a id="botConf2" class="glyphicon glyphicon-cog" style="font-size:28px" href=""></a></li>
+
+        </ul>
+
+      </div>
+
+  </nav>
+
+  <script>
+
+    function fadeOut() {
+      $("#inbox-nav4").fadeOut('slow');  //OR fadeOut('10000') time is in milliseconds
+    }
+  </script>
+
+
+
+  <!--Texto página principal-->
+
+  <script>
+    function validate(evt) {
+      var theEvent = evt || window.event;
+
+      // Handle paste
+      if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+      } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+      }
+      var regex = /[0-9]|\[0-9]/;
+      if (!regex.test(key)) {
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
+  </script>
+  <div class="container main-container">
+    <div id="signin-prompt" class="jumbotron page">
+      <h1>Configuración de calendarios</h1>
+      <br>
+      <hr>
+      <div class="princip" style="width:50%;float:left">
+        <p>Cantidad de citas máxima:</p> <input style="text-align: center" onkeypress='validate(event)' maxlength="3"
+          size="1" title="Introduzca el nombre de la sala" id="topData" name="RoomGog" type="text" /> <br>
+        <br>
+        <p>Primera cita hace:</p> <input style="text-align: center" maxlength="3" size="1" onkeypress='validate(event)'
+          title="Introduzca el nombre de la sala" id="startDataD" name="RoomGog" type="text" />
+        <p style="display:inline-block">dias y </p> <input onkeypress='validate(event)' id="startDataH"
+          style="text-align: center" maxlength="3" size="1" name="RoomGog" type="text" />
+        <p style="display:inline-block">horas</p>
+        <br>
+        <br>
+        <p>Última Cita en:</p> <input maxlength="3" size="1" onkeypress='validate(event)'
+          title="Introduzca el nombre de la sala" id="endDataD" style="text-align: center" name="RoomGog" type="text" />
+        <p style="display:inline-block">dias y </p> <input onkeypress='validate(event)' id="endDataH"
+          style="text-align: center" maxlength="3" size="1" name="RoomGog" type="text" />
+        <p style="display:inline-block">horas</p>
+        <br>
+        <br>
+        <hr>
+      </div>
+
+
+      <div class="secun" style="width:50%;float:left">
+
+
+        <p>Selecciona color de fondo para citas: <input type="color" value="#7ca9ce" id="myColor"></p>
+        <br><br>
+        <p>Selecciona color de la letra: <input type="color" value="#333333" id="myColorLetra"></p>
+        <br><br>
+        <p>Mostrar Descripciones de cita: <input id="checkDescription" style="transform: scale(1.5)" type="checkbox"
+            value="yes"></p>
+        <br><br>
+        <p>Ocultar Logo: <input id="checkLogo" style="transform: scale(1.5)" type="checkbox" value="no"></p>
+        <hr>
+<!--<span class="glyphicon glyphicon-eye-open checked"></span><span class="glyphicon glyphicon-eye-close unchecked"></span>-->
+      </div>
+      <div style="clear:both"> <a class="btn btn-lg btn-primary pruebas" onclick="SaveData()" role="button"
+          id="butSavDat">Guardar
+          Configuración</a></div>
+
+
+
+    </div>
+  </div>
+  <script>
+
+
+
+  </script>
+
+  <script>
+
+    //localStorage.removeItem("topData");
+    document.getElementById("topData").value = localStorage.getItem("topData");
+    document.getElementById("startDataD").value = localStorage.getItem("startDataD");
+    document.getElementById("startDataH").value = localStorage.getItem("startDataH");
+    document.getElementById("endDataD").value = localStorage.getItem("endDataD");
+    document.getElementById("endDataH").value = localStorage.getItem("endDataH");
+
+    if (localStorage.getItem("colorDiv") != null) {
+      document.getElementById("myColor").value = localStorage.getItem("colorDiv");
+    }
+
+    if (localStorage.getItem("colorLetra") != null) {
+      document.getElementById("myColorLetra").value = localStorage.getItem("colorLetra");
+    }
+
+
+    var bool = localStorage.getItem("check");
+    console.log(bool);
+    if(bool == null || bool == ""){
+      bool = "true";
+    }
+    if (bool == "true") {
+      document.getElementById("checkDescription").checked = true;
+    } else {
+      document.getElementById("checkDescription").checked = false;
+    }
+
+    var bool2 = localStorage.getItem("checkL");
+    console.log(bool2);
+    if (bool2 == "true") {
+      document.getElementById("checkLogo").checked = true;
+    } else {
+      document.getElementById("checkLogo").checked = false;
+    }
+  </script>
+
+  <script>
+
+    function SaveData() {
+
+      console.log(document.getElementById("checkLogo").checked);
+      var check2 = document.getElementById("checkLogo").checked;
+      localStorage.setItem("checkL", check2);
+
+      console.log(document.getElementById("checkDescription").checked);
+      var check = document.getElementById("checkDescription").checked;
+      localStorage.setItem("check", check);
+
+      //top
+      var top = document.getElementById("topData").value;
+      console.log(top);
+      localStorage.setItem("topData", top);
+      //window.history.back();
+
+
+      //start date
+      var startDateD = document.getElementById("startDataD").value;
+      localStorage.setItem("startDataD", startDateD);
+
+      var startDateH = document.getElementById("startDataH").value;
+      localStorage.setItem("startDataH", startDateH);
+      console.log("start: " + startDateD + "" + endDateH);
+
+
+      //end date
+      var endDateD = document.getElementById("endDataD").value;
+      localStorage.setItem("endDataD", endDateD);
+
+      var endDateH = document.getElementById("endDataH").value;
+      localStorage.setItem("endDataH", endDateH);
+      console.log("end: " + endDateD + "" + endDateH);
+
+      //colores
+      var colorDiv = document.getElementById("myColor").value;
+      localStorage.setItem("colorDiv", colorDiv);
+
+      var colorDiv2 = document.getElementById("myColorLetra").value;
+      localStorage.setItem("colorLetra", colorDiv2);
+
+      alert("Se ha guardado:\n\n Maximo de citas: " + localStorage.getItem("topData") + "\n Primera cita hace: " + startDateD + " dias y " + startDateH + " horas\n"
+        + "Última cita en: " + endDateD + " dias y " + endDateH + " horas");
+      window.history.back();
+
+
+      var endDateH
+    }
+
+  </script>
+
+  <script>
+    var bool2 = localStorage.getItem("checkL");
+    console.log(bool2);
+    if (bool2 == "true") {
+      document.getElementById("divLogo").style.display = "none";
+    } else {
+      document.getElementById("divLogo").style.display = "block";
+    }
+
+  </script>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+
+  </script>
+</body>
+
+</html>
